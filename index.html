@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COINGULATE - Make It Happen</title>
+    <link rel="icon" type="image/png" href="https://coingulate.com/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --electric-yellow: #FFE500;
+            --deep-purple: #1a0033;
+            --bright-cyan: #00F0FF;
+            --hot-orange: #FF4500;
+            --off-white: #F8F8F8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--deep-purple);
+            color: var(--off-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' /%3E%3C/svg%3E");
+        }
+        
+        .gradient-orbs {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .orb-1 {
+            width: 500px;
+            height: 500px;
+            background: var(--electric-yellow);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--bright-cyan);
+            bottom: -150px;
+            left: -100px;
+            animation-delay: 7s;
+        }
+        
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--hot-orange);
+            top: 50%;
+            left: 50%;
+            animation-delay: 14s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: slideDown 0.8s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, var(--electric-yellow) 0%, var(--bright-cyan) 50%, var(--hot-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 20px rgba(255, 229, 0, 0.3));
+            }
+            to {
+                filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.5));
+            }
+        }
+        
+        .alert-icon {
+            font-size: 2rem;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.7;
+            }
+        }
+        
+        .tagline {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--bright-cyan);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            animation: slideDown 0.8s ease-out 0.2s both;
+        }
+        
+        .definition-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 229, 0, 0.3);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            margin: 3rem auto;
+            max-width: 700px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .word-header {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--electric-yellow);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .pronunciation {
+            font-style: italic;
+            color: var(--bright-cyan);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .pos {
+            display: inline-block;
+            background: var(--hot-orange);
+            color: var(--deep-purple);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .definition {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--off-white);
+        }
+        
+        .example {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid var(--bright-cyan);
+            padding: 1rem 1.5rem;
+            font-style: italic;
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .coin-section {
+            margin: 4rem auto;
+            text-align: center;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+        
+        .coin-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--hot-orange) 0%, var(--electric-yellow) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.05em;
+        }
+        
+        .coin-description {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--electric-yellow) 0%, var(--hot-orange) 100%);
+            color: var(--deep-purple);
+            padding: 1.25rem 3rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 229, 0, 0.3);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.1em;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 229, 0, 0.5);
+        }
+        
+        .cta-text {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 4rem auto;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--electric-yellow);
+            box-shadow: 0 10px 30px rgba(255, 229, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--electric-yellow);
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .feature-text {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 5rem;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+        
+        .question {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bright-cyan);
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .definition-box {
+                padding: 2rem 1.5rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-bg"></div>
+    <div class="gradient-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <div class="alert-icon">🚨</div>
+            <h1 class="logo">COINGULATE</h1>
+            <p class="tagline">The Movement. The Memecoin. The Mindset.</p>
+        </header>
+        
+        <div class="definition-box">
+            <h2 class="word-header">coingulate</h2>
+            <p class="pronunciation">/koin·gyə·lāt/</p>
+            <span class="pos">verb</span>
+            <p class="definition">
+                To actively work with others, pull strings, and use every resource to get something done.
+            </p>
+            <div class="example">
+                "I'm going to coingulate on this project — reach out to some collaborators and make it happen."
+            </div>
+        </div>
+        
+        <div class="coin-section">
+            <h2 class="coin-title">The COINgulate Memecoin</h2>
+            <p class="coin-description">
+                More than just a coin — it's a movement for hustlers, builders, and connectors 
+                who make things happen. When you hold COINgulate, you're part of the network.
+            </p>
+            <a href="https://pump.fun/coin/Gihnj3uXA9sJazCMN94Zt3ju5nv2SYmFZNSDgRVxpump" 
+               class="cta-button" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                <span class="cta-text">Get COINgulate Now</span>
+            </a>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <span class="feature-icon">🤝</span>
+                <h3 class="feature-title">Network Effect</h3>
+                <p class="feature-text">
+                    Connect with builders, hustlers, and go-getters. Coingulate isn't just what you do — it's who you know.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h3 class="feature-title">Take Action</h3>
+                <p class="feature-text">
+                    Stop waiting. Start coingulating. Pull every string, use every resource, make it happen.
+                </p>
+            </div>
+            
+            <div class="feature-card">
+                <span class="feature-icon">🚀</span>
+                <h3 class="feature-title">Movement</h3>
+                <p class="feature-text">
+                    Join the community of doers. When you coingulate, you're part of something bigger.
+                </p>
+            </div>
+        </div>
+        
+        <footer>
+            <p class="question">Who's coingulating this weekend?</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">
+                © 2026 COINgulate. A word. A coin. A way of life.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

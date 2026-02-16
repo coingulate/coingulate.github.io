@@ -53,6 +53,7 @@ COINgulate isn't just a word—it's a coin. A memecoin for the doers, the networ
 
 - **Website:** [coingulate.com](https://coingulate.com)
 - **Token:** [pump.fun/coin/...](https://pump.fun/coin/Gihnj3uXA9sJazCMN94Zt3ju5nv2SYmFZNSDgRVxpump)
+- **Token:** [discord.gg/...](https://discord.gg/8gyUHsUh)
 
 ## The Movement
 
